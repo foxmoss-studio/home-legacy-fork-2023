@@ -1,151 +1,181 @@
 # Foxmoss Website Authority Map
 
-This is the repository-side map connecting the public site source to the Google Drive website authority system. It is intentionally paired with the Drive root router rather than duplicating every product document in Git.
+This is the repository-side map connecting the public site source to the Google Drive website authority system. It is paired with the Drive root router rather than duplicating every product document in Git.
 
 ## Start here
 
 **Drive root router — mandatory first read for substantive website work**  
 https://docs.google.com/document/d/13Tl_Drg-jjCB6U0d7gu7GSnW-ESKFcU00Deqb4WoldM/edit
 
-**Drive Website Working Queue — current ACTIVE / QUEUED routing**  
+**Drive Website Working Queue — ACTIVE / QUEUED routing**  
 https://docs.google.com/document/d/1TsfOy_EkQIcsYBgJ_Nj-Mxj8_n8KzvfDfuldcSiOLvY/edit
 
-**Current Website Working at creation — WEB-001**  
+**Current Website Working at this reconciliation — WEB-001**  
 https://docs.google.com/document/d/19ZI0AnWwuCHmBLuNpv9ZSvGr1TBW05xVbIy1UDeHydc/edit
 
-Fresh queue state wins when the active Working changes.
+Fresh queue state wins whenever the active Working changes. [`AGENTS.md`](AGENTS.md) owns repository execution/read rules.
 
-## Git execution owner
-
-[`AGENTS.md`](AGENTS.md) owns repository execution/read rules. Read it before edits.
-
-Current public repository: https://github.com/FoxandMoss/home  
+Repository: https://github.com/FoxandMoss/home  
 Publishing branch: `gh-pages`
 
-Never freeze a commit hash in this map as permanent current truth. Read the current branch head before implementation/audit work.
+Always fresh-read the current branch/head before implementation or audit work. Commit hashes in Workings are receipts, not permanent selectors.
 
-## Drive owners and when to read them
+## Drive owners and read triggers
 
 | Owner | Role | Read when |
 | --- | --- | --- |
 | [Website START HERE](https://docs.google.com/document/d/13Tl_Drg-jjCB6U0d7gu7GSnW-ESKFcU00Deqb4WoldM/edit) | Root router / authority map | Every substantive website task |
-| [Website Working Queue](https://docs.google.com/document/d/1TsfOy_EkQIcsYBgJ_Nj-Mxj8_n8KzvfDfuldcSiOLvY/edit) | ACTIVE/QUEUED/CLOSED routing | Every substantive website task and any status change |
-| [Website Master Plan](https://docs.google.com/document/d/1jsGnDlELDxsVRj6FTS-kmLN1VB4iPu4MPc8Dc7_n2UM/edit) | Architecture, accessibility, domain, roadmap | Shared shell, accessibility, domain, structure, metadata strategy, roadmap |
+| [Website Working Queue](https://docs.google.com/document/d/1TsfOy_EkQIcsYBgJ_Nj-Mxj8_n8KzvfDfuldcSiOLvY/edit) | ACTIVE/QUEUED/CLOSED routing | Every substantive website task and status change |
+| [Website Master Plan](https://docs.google.com/document/d/1jsGnDlELDxsVRj6FTS-kmLN1VB4iPu4MPc8Dc7_n2UM/edit) | Architecture, accessibility, domain, roadmap | Shared shell, accessibility, privacy routing, domain, structure, metadata strategy |
 | [Global Programming Audit Contract](https://docs.google.com/document/d/1xJcG6bOwBlc6LogJ38SiqF5v0icpIfcGlB_l5Tqv8yQ/edit) | Cross-project programming audit contract | Audit/repair/validation/repository correctness work |
 | [Emira public-facing copy](https://docs.google.com/document/d/1ZpqgKcR8Qkkw09MmFK3uzTQySL6V9CJ9Kp5fIW80HcY/edit) | Emira outward-facing language | Emira description, feature claims, website/App Store wording |
-| [Emira publication/subscription Working](https://docs.google.com/document/d/1rJZmaRFyl8A2Gvygy_v3idWKjQhZf7GPoXoggyuH6pw/edit) | Commerce/privacy/publication evidence | Price, trial, entitlement, privacy, publication/App Store status claims |
+| [Emira publication/subscription Working](https://docs.google.com/document/d/1rJZmaRFyl8A2Gvygy_v3idWKjQhZf7GPoXoggyuH6pw/edit) | Commerce/privacy/publication evidence | Trial, entitlement, privacy, publication/App Store status claims |
 | [Wordleaf Development Handoff](https://docs.google.com/document/d/11Ynxmnrq-XCc40H-npjRIqcb9JWwUa8-DOZ2-EdzVM0/edit) | Wordleaf product handoff | Restoring/editing Wordleaf public presence or claims |
 | [Nalia Development Handoff](https://docs.google.com/document/d/1TceC8Rhw0dW8E15GBJZK36S-oNSsqltWm8hL_KP_syQ/edit) | Nalia product handoff | Restoring/editing Nalia public presence or claims |
 
-Do not read every owner on every task. Use START HERE + the active Working to select the relevant subset.
+Do not read every owner on every task. START HERE + the ACTIVE Working select the complete relevant subset.
 
-## Git owners and source surfaces
+## Current identity and public direction
+
+- Visible studio mark/name: **Foxmoss / FOXMOSS**.
+- Formal umbrella descriptor: **Foxmoss Studio**.
+- Intended future canonical domain: **foxmoss.studio**.
+- The custom domain/DNS/HTTPS cutover is **not** claimed complete. Current canonical URLs remain on `foxandmoss.github.io/home` until the domain is actually owned/configured/verified.
+- Current public product set: **Emira only**.
+- Wordleaf, Nalia, and Storage Guard remain preserved but unpublished until explicitly restored.
+- `Things made with care.` and the handmade botanical/Alice identity remain part of the site.
+
+Older hidden product source and asset filenames can still contain `Fox & Moss`. That is preserved migration/history, not public naming authority.
+
+## Current public architecture — 2026-10-31
+
+The public shell was rebuilt under direct user instruction. It is now static-first and Foxmoss-first rather than a large hash-routed product manual.
+
+### Canonical public routes
+
+- `/home/` — Foxmoss studio homepage. Studio-first front door with Emira as the current featured project.
+- `/home/emira/` — canonical Emira product page.
+- `/home/privacy/` — Foxmoss website privacy hub + website-specific policy.
+- `/home/privacy/emira/` — dedicated Emira Privacy Policy.
+- `/home/404.html` — Foxmoss-styled not-found page.
+
+Privacy routing rule: the root `/privacy/` namespace owns privacy navigation. The website policy lives at `/privacy/`; product policies live below it, e.g. `/privacy/emira/`, with future `/privacy/wordleaf/`, `/privacy/nalia/`, etc. created only when those products are actually public/relevant. Do not merge product data-handling disclosures back into the website policy.
+
+### Shared public shell
+
+- `site.css` — current public Foxmoss visual/accessibility shell. Preserves botanical artwork, Alice typography, warm brown/cream surfaces, responsive layouts, visible focus, comfortable targets, and reduced-motion behavior.
+- `site.js` — lightweight public behavior. It controls botanical scroll position, **actually stops scroll-linked movement for `prefers-reduced-motion`**, and reads release labels from `downloads/apps.json` where a page opts in with `data-download-label`.
+- Public pages use a visible-on-focus skip link and `main#main-content`.
+- Public pages use page-specific `h1` headings and `aria-current` navigation.
+- The public homepage no longer depends on jQuery or the old hash router.
+
+### Preserved legacy/hidden source
+
+- `style.css`, `script.js`, and `page.js` remain because preserved unpublished pages may still use them. They are not the canonical new public shell.
+- `wordleaf/index.html` and `nalia/index.html` remain preserved and directly addressable if someone already knows the route, but the current public studio navigation and sitemap do not advertise them.
+- Hiding/unpublishing is **not deletion**. Restore a product only after reading its current owner/release truth.
+- Release availability in `downloads/apps.json` does not itself authorize public studio visibility.
+
+## Public discovery / crawler truth
+
+- `sitemap.xml` currently advertises exactly: root, Emira, `/privacy/`, and `/privacy/emira/`.
+- `robots.txt` allows normal crawling and points to the sitemap. Hidden products are **unlinked/unlisted**, not crawler-blocked merely because they are unpublished from navigation.
+- `404.html` is `noindex, follow` and gives routes back to Home/Emira/Privacy.
+- Canonical and Open Graph URLs remain the current GitHub Pages host until custom-domain cutover is actually verified.
+
+## Release/status truth
+
+- `downloads/apps.json` is the shared platform availability/status manifest.
+- The homepage Emira status uses `data-download-label="emira:ios"`; `site.js` reads the current label from the manifest with a truthful static fallback.
+- `downloads/release-policy.json` remains the desktop release sync policy.
+- `.github/workflows/sync-downloads.yml` can update `downloads/apps.json` from release sources.
+- `.github/workflows/verify-downloads.yml` validates manifest structure, available endpoints, Emira homepage status wiring, and rejects unpublished-product discovery markers on the homepage.
+
+## Public-site validation
+
+`.github/workflows/verify-site.yml` is the public shell regression check. It validates the canonical source routes for:
+
+- `lang`, viewport, exactly one `h1`, skip-to-main, and `main#main-content`;
+- absence of Wordleaf/Nalia/Storage Guard text from canonical public pages;
+- absence of the legacy jQuery/hash-router shell on the homepage;
+- shared `site.css` / `site.js` use;
+- website-vs-Emira privacy routing;
+- exact current sitemap routes;
+- the current hidden-link policy not regressing into crawler bans.
+
+A workflow file existing is not proof that a specific run passed. Read the actual run/status for validation evidence.
+
+## Source surfaces
 
 ### Governance / routing
 
-- [`AGENTS.md`](AGENTS.md): repository execution rules and required read route.
-- `WEBSITE-AUTHORITY.md`: this Git ↔ Drive map.
-- [`README.md`](README.md): repository orientation and inherited template history; it is **not** the top execution authority.
-- [`WEBSITE-TODO.md`](WEBSITE-TODO.md): older front-end review backlog/history. Use only when current Workings still own an item or for provenance.
-- [`INSTALLER-CONTRACT.md`](INSTALLER-CONTRACT.md): Windows installer/download owner for public desktop download paths.
+- `AGENTS.md` — repository execution/read rules.
+- `WEBSITE-AUTHORITY.md` — this Git ↔ Drive map.
+- `README.md` — repository orientation/template history, not top authority.
+- `WEBSITE-TODO.md` — older review backlog/history.
+- `INSTALLER-CONTRACT.md` — Windows installer/download contract.
 
-### Public source
+### Canonical public source
 
-- `index.html`: root static/canonical HTML, visible site copy, root metadata, hash regions, support/privacy source. Current root public discovery is Emira-only.
-- `script.js`: homepage hash routing, dynamic behavior and download-manifest application. It preserves old unpublished homepage hashes by redirecting them to Emira; it no longer owns the Emira-only metadata/navigation truth.
-- `style.css`: shared root-page visual system, responsive behavior, focus/motion/layout.
-- `page.js`: dedicated product-page shared behavior where used. While Wordleaf/Nalia are unpublished, it hides unpublished product links from rendered product-page navigation.
-- `emira/index.html`: dedicated Emira product page.
-- `wordleaf/index.html`: preserved Wordleaf page; unpublished by current direction until explicitly restored.
-- `nalia/index.html`: preserved Nalia page; unpublished by current direction until explicitly restored.
-- `sitemap.xml`: crawler route inventory; current inventory advertises only root + Emira.
-- `robots.txt`: crawler policy and sitemap pointer; current policy disallows `/home/wordleaf/` and `/home/nalia/` while those pages are unpublished.
-- `downloads/apps.json`: shared platform availability/status manifest. Release availability does **not** itself authorize website visibility.
-- `downloads/release-policy.json`: verified-release sync policy for desktop products.
-- `downloads/StorageGuard-Windows-Installer.exe` and `downloads/storage-guard-latest.json`: Storage Guard release/update artifacts currently stored in this repository. Their existence does not make Storage Guard public on the studio site.
-- `.github/workflows/sync-downloads.yml`: release-check/sync automation that can update `downloads/apps.json` and commit the manifest back to `gh-pages`.
-- `.github/workflows/verify-downloads.yml`: manifest/endpoint/page-wiring validator. Its page check now requires Emira’s root availability marker and rejects unpublished product links/download markers in `index.html`.
-- `testfile.html`: stale public test artifact containing only `testing the text.`; no current product/source-owner purpose identified. Do not treat it as a canonical public route.
-- background/avatar/botanical image assets: current visual assets. Asset filenames containing the older `fox-and-moss` form are migration/history, not by themselves naming authority.
+- `index.html`
+- `emira/index.html`
+- `privacy/index.html`
+- `privacy/emira/index.html`
+- `404.html`
+- `site.css`
+- `site.js`
+- `sitemap.xml`
+- `robots.txt`
+- `downloads/apps.json`
+- `.github/workflows/verify-downloads.yml`
+- `.github/workflows/verify-site.yml`
 
-If later Workings introduce a generated/shared shell, 404, CNAME, CI, or other canonical owner, add it here and to START HERE as appropriate.
+### Preserved/non-canonical public-tree source
 
-## Current public direction
-
-Current user direction is:
-
-- formal umbrella identity: **Foxmoss Studio**;
-- compact mark/name: **Foxmoss / FOXMOSS**;
-- intended domain: **foxmoss.studio**;
-- public product set: **Emira only**;
-- Wordleaf, Nalia, Storage Guard remain preserved but unpublished;
-- retain `Things made with care.` and the handmade botanical identity.
-
-The source still contains older `Fox & Moss` naming. That is migration debt, not evidence that the current direction changed.
-
-### Visibility reconciliation — 2026-10-31
-
-Direct user instruction authorized immediate cleanup of the other public links. The current root `index.html` is now statically Emira-only rather than relying on JavaScript to hide Wordleaf, Nalia, and Storage Guard. Its title, description, social descriptions, navigation, Home product card, and root content no longer advertise those unpublished products. The old full hidden product manuals were removed from the root canonical HTML; the dedicated Wordleaf/Nalia source pages remain preserved for later restoration.
-
-Crawler/discovery routing was reconciled at the same time:
-
-- `sitemap.xml` now advertises only the root and `/emira/`;
-- `robots.txt` disallows the preserved `/home/wordleaf/` and `/home/nalia/` routes while unpublished;
-- `page.js` hides unpublished Wordleaf/Nalia/Storage Guard links from rendered dedicated-page navigation where that shared script is used;
-- `script.js` keeps only a legacy-hash fallback for old `#wordleaf`, `#nalia`, and `#storage-guard` bookmarks, routing them to `#emira` instead of restoring unpublished content;
-- `.github/workflows/verify-downloads.yml` no longer requires hidden product markers in the root page and now rejects their root links/download markers.
-
-The release manifest may still contain Wordleaf, Nalia, and Storage Guard entries. That is release-channel truth, not website visibility permission.
-
-## Known baseline issues captured by WEB-001
-
-Commit `4072c96154e7c2edf2655653ab1714a40cc79929` originally implemented Emira-only presentation mainly in `script.js`, leaving static/crawler-visible source inconsistent. That specific root/sitemap/validator visibility drift was repaired on 2026-10-31 under direct user instruction.
-
-Remaining distinct migration/work items are not evidence that hidden products should be republished:
-
-- older `Fox & Moss` naming remains in current source pending the dedicated identity/domain cutover;
-- dedicated unpublished product HTML is intentionally preserved for later restoration, while crawler access is currently disallowed and shared rendered navigation hides unpublished links;
-- `downloads/apps.json` may report releases for products that are still unpublished from the studio site;
-- `testfile.html` remains in the public Pages tree with no identified canonical purpose.
-
-Do not cite the older JS-only patch as proof of current behavior. Read current source and current routing.
+- `wordleaf/index.html`
+- `nalia/index.html`
+- legacy `style.css`, `script.js`, `page.js` where still consumed by preserved pages
+- `testfile.html` — stale test artifact with no current canonical purpose; keep routed for later cleanup rather than treating it as a real page
+- Storage Guard release artifacts under `downloads/`
 
 ## Read triggers by change class
 
 ### Brand / domain
-Read START HERE, Queue, ACTIVE Working, Website Master Plan, `AGENTS.md`, current `index.html` metadata/header/footer/structured data, relevant dedicated product pages, and current official GitHub Pages docs before external DNS/Pages changes.
+Read START HERE, Queue, ACTIVE Working, Website Master Plan, `AGENTS.md`, current public metadata/header/footer/structured data, and current official GitHub Pages docs before external DNS/Pages changes. Do not add a guessed `CNAME`.
 
 ### Navigation / product visibility
-Read START HERE, Queue, ACTIVE Working, `index.html`, `script.js`, `sitemap.xml`, shared navigation/product pages, and the product owner for any product being restored. Also inspect `verify-downloads.yml` if root product/download markers change.
+Read START HERE, Queue, ACTIVE Working, canonical public pages, sitemap, shared shell, validation workflows, and the product owner for any product being restored. Visibility changes must preserve hidden source unless deletion is explicitly requested.
 
-### Emira marketing / privacy / pricing / subscription
-Read Emira public-copy owner; add current Emira publication/subscription authority for price/trial/privacy/publication claims. Verify changing factual claims against current product/release truth.
+### Privacy
+Read START HERE + Queue + ACTIVE Working + Website Master Plan privacy architecture. For a product policy, also read that product's current privacy/publication authority. Keep website privacy and product privacy separate. New public product privacy policies belong under `/privacy/<product>/`.
+
+### Emira marketing / trial / entitlement / publication
+Read the Emira public-copy owner. Add the current Emira publication/subscription authority for trial, entitlement, privacy, publication, or App Store claims. Do not infer public App Store availability from a build or manifest state.
 
 ### Accessibility / responsive / motion
-Read Website Master Plan accessibility owner + current HTML/CSS/JS + ACTIVE Working + actual validation. Preserve no-JS and reduced-motion requirements where applicable.
+Read Website Master Plan accessibility owner + current `site.css`/`site.js` + canonical HTML + ACTIVE Working + actual validation. Reduced-motion must reduce actual motion, not only an optimization hint.
 
 ### Downloads / installers
-Read `INSTALLER-CONTRACT.md`, `downloads/apps.json`, `downloads/release-policy.json`, both download workflows, current product release truth, and product handoff as applicable.
+Read `INSTALLER-CONTRACT.md`, `downloads/apps.json`, `downloads/release-policy.json`, download workflows, current product release truth, and the relevant product handoff.
 
 ### Metadata / crawler visibility
-Read `index.html`, dedicated product pages, `sitemap.xml`, `robots.txt`, current canonical-domain state, ACTIVE Working, and Website Master Plan. Hidden UI alone is not crawler/canonical cleanup.
+Read canonical public pages, `sitemap.xml`, `robots.txt`, current domain state, ACTIVE Working, and Website Master Plan. Hidden UI alone is not metadata/crawler cleanup.
 
 ### Audit
-Read `AGENTS.md`, Global Programming Audit Contract, ACTIVE Working, fresh head, affected source, and relevant owners. Execute repair/re-validation loop; unavailable checks are not PASS.
+Read `AGENTS.md`, Global Programming Audit Contract, ACTIVE Working, fresh head, affected source, and relevant owners. Execute repair + re-validation; unavailable/not-run checks are not PASS.
 
 ## Cross-reference maintenance
 
-When a new Google website authority, Website Working, Git governance file, or canonical source owner is created/replaced:
+When a new website Google authority, Website Working, Git governance file, or canonical source owner is created/replaced:
 
-1. update Drive START HERE if read routing changes;
+1. update Drive START HERE if future read routing changes;
 2. update the Drive Queue when Working status/order changes;
-3. update the ACTIVE Working for baseline/requirement/evidence changes;
-4. add a backlink from the new authority to START HERE when practical;
+3. update the ACTIVE Working for source baseline/requirements/evidence changes;
+4. add a backlink from a new authority to START HERE when practical;
 5. update this file when Drive/Git ownership changes;
-6. update `AGENTS.md` only when execution rules change;
-7. preserve superseded history with labels rather than silently deleting provenance;
-8. read back links and changed authority/source after writes.
+6. preserve superseded history rather than silently deleting provenance;
+7. read back the changed authority/source after writes.
 
 ## Supersession rule
 
-Current routing at the top of START HERE/Queue beats older current-status statements. Current source beats historical implementation descriptions. A current topic owner beats stale public copy about what the product should say or do. Direct current user instruction beats all stored project documents.
+Direct current user instruction beats stored project docs. Current routing beats older current-status text. Current source beats historical implementation descriptions. Current topic owners decide what should be true; current Git shows what is actually implemented. When those differ, reconcile the difference explicitly.
