@@ -7,7 +7,7 @@ on:
       - "downloads/apps.json"
       - "downloads/release-policy.json"
       - "index.html"
-      - "script.js"
+      - "site.js"
       - ".github/workflows/verify-downloads.yml"
   schedule:
     - cron: "7 12 * * *"
@@ -43,7 +43,7 @@ jobs:
               ("storage-guard", "mac"),
               ("emira", "ios"),
           }
-          missing = [(a,p) for a,p in required if p not in data.get(a,{})]
+          missing = [(a, p) for a, p in required if p not in data.get(a, {})]
           if missing:
               raise SystemExit(f"Missing download entries: {missing}")
 
@@ -73,19 +73,19 @@ jobs:
                       continue
                   url = urljoin(base, entry["url"])
                   print(f"Checking {app}/{platform}: {url}")
-                  req = urllib.request.Request(url, method="HEAD", headers={"User-Agent":"FoxAndMoss-download-check"})
+                  req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "Foxmoss-download-check"})
                   with urllib.request.urlopen(req, timeout=60) as response:
                       if response.status >= 400:
                           raise SystemExit(f"{app}/{platform}: HTTP {response.status}")
           PY
 
-      - name: Confirm page uses shared manifest without unpublished discovery
+      - name: Confirm public shell uses shared manifest without unpublished discovery
         shell: bash
         run: |
           set -euo pipefail
-          grep -q "downloads/apps.json" script.js
+          grep -q "downloads/apps.json" site.js
           grep -q 'data-download-label="emira:ios"' index.html
-          if grep -Eq 'href="[^"#]*(wordleaf|nalia)/|href="#(wordleaf|nalia|storage-guard)"|data-download-app="(wordleaf|nalia|storage-guard)"' index.html; then
+          if grep -Eqi 'href="[^"#]*(wordleaf|nalia)/|href="#(wordleaf|nalia|storage-guard)"|data-download-app="(wordleaf|nalia|storage-guard)"' index.html; then
             echo "Unpublished product discovery leaked into index.html" >&2
             exit 1
           fi
