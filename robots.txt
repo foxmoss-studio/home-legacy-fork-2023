@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /home/wordleaf/
-Disallow: /home/nalia/
 
 Sitemap: https://foxandmoss.github.io/home/sitemap.xml
