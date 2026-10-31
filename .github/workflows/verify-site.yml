@@ -8,6 +8,7 @@ on:
       - "emira/**"
       - "privacy/**"
       - "404.html"
+      - "favicon.svg"
       - "site.css"
       - "site.js"
       - "sitemap.xml"
@@ -33,8 +34,6 @@ jobs:
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
-          from urllib.parse import urlsplit
-          import re
           import xml.etree.ElementTree as ET
 
           public_pages = [
@@ -44,6 +43,12 @@ jobs:
               Path("privacy/emira/index.html"),
               Path("404.html"),
           ]
+          canonical_urls = {
+              Path("index.html"): "https://foxandmoss.github.io/home/",
+              Path("emira/index.html"): "https://foxandmoss.github.io/home/emira/",
+              Path("privacy/index.html"): "https://foxandmoss.github.io/home/privacy/",
+              Path("privacy/emira/index.html"): "https://foxandmoss.github.io/home/privacy/emira/",
+          }
           hidden_names = ("wordleaf", "nalia", "storage guard", "storage-guard")
 
           class AuditParser(HTMLParser):
@@ -54,18 +59,34 @@ jobs:
                   self.viewport = False
                   self.main_target = False
                   self.skip_target = False
+                  self.icon = False
+                  self.canonical = None
                   self.links = []
               def handle_starttag(self, tag, attrs):
                   attrs = dict(attrs)
-                  if tag == "html": self.lang = attrs.get("lang")
-                  if tag == "meta" and attrs.get("name") == "viewport": self.viewport = bool(attrs.get("content"))
-                  if tag == "h1": self.h1 += 1
-                  if tag == "main" and attrs.get("id") == "main-content": self.main_target = True
+                  if tag == "html":
+                      self.lang = attrs.get("lang")
+                  if tag == "meta" and attrs.get("name") == "viewport":
+                      self.viewport = bool(attrs.get("content"))
+                  if tag == "h1":
+                      self.h1 += 1
+                  if tag == "main" and attrs.get("id") == "main-content":
+                      self.main_target = True
+                  if tag == "link":
+                      rel = (attrs.get("rel") or "").split()
+                      if "icon" in rel:
+                          self.icon = True
+                      if "canonical" in rel:
+                          self.canonical = attrs.get("href")
                   if tag == "a":
                       href = attrs.get("href")
                       if href:
                           self.links.append(href)
-                          if href == "#main-content": self.skip_target = True
+                          if href == "#main-content":
+                              self.skip_target = True
+
+          if not Path("favicon.svg").exists():
+              raise SystemExit("Missing favicon.svg")
 
           for path in public_pages:
               if not path.exists():
@@ -78,6 +99,9 @@ jobs:
               if parser.h1 != 1: raise SystemExit(f"{path}: expected exactly one h1, found {parser.h1}")
               if not parser.main_target: raise SystemExit(f"{path}: missing #main-content")
               if not parser.skip_target: raise SystemExit(f"{path}: missing skip-to-main link")
+              if not parser.icon: raise SystemExit(f"{path}: missing favicon link")
+              if path in canonical_urls and parser.canonical != canonical_urls[path]:
+                  raise SystemExit(f"{path}: unexpected canonical URL {parser.canonical!r}")
               lowered = text.lower()
               leaked = [name for name in hidden_names if name in lowered]
               if leaked:
@@ -90,10 +114,20 @@ jobs:
               raise SystemExit("Homepage is not using the shared Foxmoss shell")
           if 'href="./privacy/"' not in root or 'href="./privacy/emira/"' not in root:
               raise SystemExit("Homepage privacy routing is incomplete")
+          if 'property="og:image"' not in root or 'name="twitter:image"' not in root:
+              raise SystemExit("Homepage social-sharing image metadata is incomplete")
 
           emira = Path("emira/index.html").read_text(encoding="utf-8")
           if '../privacy/emira/' not in emira:
               raise SystemExit("Emira page does not point to its product privacy policy")
+          if 'data-download-label="emira:ios"' not in emira:
+              raise SystemExit("Emira page is not wired to the shared release manifest")
+          if 'property="og:image"' not in emira or 'name="twitter:image"' not in emira:
+              raise SystemExit("Emira social-sharing image metadata is incomplete")
+
+          not_found = Path("404.html").read_text(encoding="utf-8").lower()
+          if 'name="robots" content="noindex, follow"' not in not_found:
+              raise SystemExit("404 page must remain noindex, follow")
 
           sitemap = ET.parse("sitemap.xml")
           ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
