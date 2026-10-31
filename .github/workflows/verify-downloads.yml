@@ -7,6 +7,7 @@ on:
       - "downloads/apps.json"
       - "downloads/release-policy.json"
       - "index.html"
+      - "emira/index.html"
       - "site.js"
       - ".github/workflows/verify-downloads.yml"
   schedule:
@@ -85,6 +86,7 @@ jobs:
           set -euo pipefail
           grep -q "downloads/apps.json" site.js
           grep -q 'data-download-label="emira:ios"' index.html
+          grep -q 'data-download-label="emira:ios"' emira/index.html
           if grep -Eqi 'href="[^"#]*(wordleaf|nalia)/|href="#(wordleaf|nalia|storage-guard)"|data-download-app="(wordleaf|nalia|storage-guard)"' index.html; then
             echo "Unpublished product discovery leaked into index.html" >&2
             exit 1
