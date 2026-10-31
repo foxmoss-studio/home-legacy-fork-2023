@@ -1,0 +1,117 @@
+name: Verify public site
+
+on:
+  push:
+    branches: [gh-pages]
+    paths:
+      - "index.html"
+      - "emira/**"
+      - "privacy/**"
+      - "404.html"
+      - "site.css"
+      - "site.js"
+      - "sitemap.xml"
+      - "robots.txt"
+      - ".github/workflows/verify-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Validate public routes and shell invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlsplit
+          import re
+          import xml.etree.ElementTree as ET
+
+          public_pages = [
+              Path("index.html"),
+              Path("emira/index.html"),
+              Path("privacy/index.html"),
+              Path("privacy/emira/index.html"),
+              Path("404.html"),
+          ]
+          hidden_names = ("wordleaf", "nalia", "storage guard", "storage-guard")
+
+          class AuditParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.h1 = 0
+                  self.lang = None
+                  self.viewport = False
+                  self.main_target = False
+                  self.skip_target = False
+                  self.links = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag == "html": self.lang = attrs.get("lang")
+                  if tag == "meta" and attrs.get("name") == "viewport": self.viewport = bool(attrs.get("content"))
+                  if tag == "h1": self.h1 += 1
+                  if tag == "main" and attrs.get("id") == "main-content": self.main_target = True
+                  if tag == "a":
+                      href = attrs.get("href")
+                      if href:
+                          self.links.append(href)
+                          if href == "#main-content": self.skip_target = True
+
+          for path in public_pages:
+              if not path.exists():
+                  raise SystemExit(f"Missing public route source: {path}")
+              text = path.read_text(encoding="utf-8")
+              parser = AuditParser()
+              parser.feed(text)
+              if parser.lang != "en": raise SystemExit(f"{path}: missing html lang=en")
+              if not parser.viewport: raise SystemExit(f"{path}: missing viewport metadata")
+              if parser.h1 != 1: raise SystemExit(f"{path}: expected exactly one h1, found {parser.h1}")
+              if not parser.main_target: raise SystemExit(f"{path}: missing #main-content")
+              if not parser.skip_target: raise SystemExit(f"{path}: missing skip-to-main link")
+              lowered = text.lower()
+              leaked = [name for name in hidden_names if name in lowered]
+              if leaked:
+                  raise SystemExit(f"{path}: unpublished product text leaked: {leaked}")
+
+          root = Path("index.html").read_text(encoding="utf-8")
+          if "jquery" in root.lower() or "script.js" in root:
+              raise SystemExit("Homepage regressed to legacy jQuery/hash-router shell")
+          if 'site.css' not in root or 'site.js' not in root:
+              raise SystemExit("Homepage is not using the shared Foxmoss shell")
+          if 'href="./privacy/"' not in root or 'href="./privacy/emira/"' not in root:
+              raise SystemExit("Homepage privacy routing is incomplete")
+
+          emira = Path("emira/index.html").read_text(encoding="utf-8")
+          if '../privacy/emira/' not in emira:
+              raise SystemExit("Emira page does not point to its product privacy policy")
+
+          sitemap = ET.parse("sitemap.xml")
+          ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          locs = {el.text for el in sitemap.findall("s:url/s:loc", ns)}
+          required = {
+              "https://foxandmoss.github.io/home/",
+              "https://foxandmoss.github.io/home/emira/",
+              "https://foxandmoss.github.io/home/privacy/",
+              "https://foxandmoss.github.io/home/privacy/emira/",
+          }
+          if locs != required:
+              raise SystemExit(f"Unexpected sitemap routes: {sorted(locs)}")
+
+          robots = Path("robots.txt").read_text(encoding="utf-8")
+          if "Disallow: /home/wordleaf/" in robots or "Disallow: /home/nalia/" in robots:
+              raise SystemExit("Hidden-link policy regressed into crawler blocking")
+          if "Sitemap: https://foxandmoss.github.io/home/sitemap.xml" not in robots:
+              raise SystemExit("robots.txt sitemap pointer is missing")
+
+          print("Public site source invariants passed.")
+          PY
