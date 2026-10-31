@@ -65,6 +65,8 @@ Privacy routing rule: the root `/privacy/` namespace owns privacy navigation. Th
 
 - `site.css` — current public Foxmoss visual/accessibility shell. Preserves botanical artwork, Alice typography, warm brown/cream surfaces, responsive layouts, visible focus, comfortable targets, and reduced-motion behavior.
 - `site.js` — lightweight public behavior. It controls botanical scroll position, **actually stops scroll-linked movement for `prefers-reduced-motion`**, and reads release labels from `downloads/apps.json` where a page opts in with `data-download-label`.
+- `favicon.svg` — current small Foxmoss browser icon using the shared public palette; it is linked from every canonical public page and the 404 page.
+- Canonical public pages use the same Home → Emira → Privacy primary navigation contract and shared footer destinations.
 - Public pages use a visible-on-focus skip link and `main#main-content`.
 - Public pages use page-specific `h1` headings and `aria-current` navigation.
 - The public homepage no longer depends on jQuery or the old hash router.
@@ -82,28 +84,33 @@ Privacy routing rule: the root `/privacy/` namespace owns privacy navigation. Th
 - `robots.txt` allows normal crawling and points to the sitemap. Hidden products are **unlinked/unlisted**, not crawler-blocked merely because they are unpublished from navigation.
 - `404.html` is `noindex, follow` and gives routes back to Home/Emira/Privacy.
 - Canonical and Open Graph URLs remain the current GitHub Pages host until custom-domain cutover is actually verified.
+- The homepage and Emira product page include Open Graph and Twitter sharing image metadata using the existing botanical artwork. All canonical public pages carry the shared favicon and theme color.
 
 ## Release/status truth
 
 - `downloads/apps.json` is the shared platform availability/status manifest.
-- The homepage Emira status uses `data-download-label="emira:ios"`; `site.js` reads the current label from the manifest with a truthful static fallback.
+- Both the homepage and canonical Emira page use `data-download-label="emira:ios"`; `site.js` reads the current label from the manifest with a truthful static fallback.
 - `downloads/release-policy.json` remains the desktop release sync policy.
 - `.github/workflows/sync-downloads.yml` can update `downloads/apps.json` from release sources.
-- `.github/workflows/verify-downloads.yml` validates manifest structure, available endpoints, Emira homepage status wiring, and rejects unpublished-product discovery markers on the homepage.
+- `.github/workflows/verify-downloads.yml` validates manifest structure, available endpoints, Emira status wiring on both public surfaces, and rejects unpublished-product discovery markers on the homepage.
 
 ## Public-site validation
 
 `.github/workflows/verify-site.yml` is the public shell regression check. It validates the canonical source routes for:
 
-- `lang`, viewport, exactly one `h1`, skip-to-main, and `main#main-content`;
+- `lang`, viewport, exactly one `h1`, skip-to-main, `main#main-content`, and favicon linkage;
+- expected canonical URLs on indexable canonical pages;
 - absence of Wordleaf/Nalia/Storage Guard text from canonical public pages;
 - absence of the legacy jQuery/hash-router shell on the homepage;
 - shared `site.css` / `site.js` use;
 - website-vs-Emira privacy routing;
+- Emira shared release-status wiring;
+- homepage/Emira social-sharing image metadata;
+- `404.html` remaining `noindex, follow`;
 - exact current sitemap routes;
 - the current hidden-link policy not regressing into crawler bans.
 
-A workflow file existing is not proof that a specific run passed. Read the actual run/status for validation evidence.
+A workflow file existing is not proof that a specific run passed. Read the actual run/status for validation evidence. If no check run is attached yet, report validation as unobserved rather than PASS.
 
 ## Source surfaces
 
@@ -122,6 +129,7 @@ A workflow file existing is not proof that a specific run passed. Read the actua
 - `privacy/index.html`
 - `privacy/emira/index.html`
 - `404.html`
+- `favicon.svg`
 - `site.css`
 - `site.js`
 - `sitemap.xml`
