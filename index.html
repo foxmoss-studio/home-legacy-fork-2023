@@ -2,217 +2,105 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Fox &amp; Moss | Emira</title>
-    <meta name="description" content="Fox & Moss makes Emira, a calm native iPhone and iPad life calendar for goals, memories, journaling, reflection, time capsules, and relaxing games.">
+    <title>Foxmoss | Things made with care</title>
+    <meta name="description" content="Foxmoss is a small independent studio for thoughtful software, games, music, writing, and other things made with care. Emira is the current featured project.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="author" content="Fox & Moss">
+    <meta name="author" content="Foxmoss Studio">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="https://foxandmoss.github.io/home/">
-    <meta property="og:title" content="Fox & Moss | Things made with care">
-    <meta property="og:description" content="Emira is a calm native iPhone and iPad life calendar for goals, memories, journaling, reflection, time capsules, and relaxing games.">
+    <meta property="og:site_name" content="Foxmoss">
+    <meta property="og:title" content="Foxmoss | Things made with care">
+    <meta property="og:description" content="A quiet corner for the things I make. Emira is the current featured project from Foxmoss Studio.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://foxandmoss.github.io/home/">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Fox & Moss | Things made with care">
-    <meta name="twitter:description" content="Fox & Moss makes Emira, a calm native iPhone and iPad life calendar.">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="twitter:title" content="Foxmoss | Things made with care">
+    <meta name="twitter:description" content="A quiet corner for the things I make. Emira is the current featured project from Foxmoss Studio.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alice&amp;display=swap" rel="stylesheet">
-    <link href="style.css?v=20261003-app-downloads-2" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link href="style.css?v=20261031-foxmoss-shell" rel="stylesheet">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Fox & Moss",
+  "name": "Foxmoss Studio",
+  "alternateName": "Foxmoss",
   "url": "https://foxandmoss.github.io/home/",
-  "sameAs": [
-    "https://github.com/FoxandMoss"
-  ]
+  "sameAs": ["https://github.com/FoxandMoss"]
 }
     </script>
   </head>
   <body>
-    <header id="header">
-      <p class="eyebrow">Fox &amp; Moss</p>
-      <h1>Things made with care.</h1>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header id="header" class="site-header">
+      <a class="brand-lockup" href="./" aria-label="Foxmoss home">
+        <span class="eyebrow">FOXMOSS</span>
+        <span class="brand-tagline">Things made with care.</span>
+      </a>
       <nav aria-label="Main navigation">
         <ul class="main-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#emira">Emira</a></li>
+          <li><a href="./" aria-current="page">Home</a></li>
+          <li><a href="./emira/">Emira</a></li>
+          <li><a href="#about">About</a></li>
         </ul>
       </nav>
     </header>
 
-    <main id="container">
+    <main id="main-content">
       <div class="inner">
         <div id="content">
-          <section id="home" class="content-region hide">
-            <div class="home-intro">
-              <div>
-                <h2>Home</h2>
-                <p>A quiet corner for the things I make.</p>
-                <p>Fox &amp; Moss is home to Emira, a calm life calendar for goals, memories, journaling, reflection, time capsules, and little relaxing games.</p>
-              </div>
-              <!-- Home/profile picture is intentionally hidden for now.
-              <img class="home-avatar" src="fox-and-moss-avatar.jpg" alt="A warm illustrated portrait with copper hair, pointed ears, and small gold stars.">
-              -->
-            </div>
-
-            <div class="app-points">
-              <div>
-                <h3>Emira</h3>
-                <p>A calm life calendar for goals, memories, journaling, reflection, time capsules, and little relaxing games. No streaks or productivity scores.</p>
-                <p><a href="./emira/">Read about Emira</a></p>
-              </div>
-            </div>
+          <section class="studio-hero" aria-labelledby="home-title">
+            <p class="section-label">Foxmoss Studio</p>
+            <h1 id="home-title">A quiet corner for the things I make.</h1>
+            <p class="hero-lede">Software, games, music, writing, and whatever else grows here. The work can be different from project to project. The thread is that it should feel considered, useful, and a little human.</p>
           </section>
 
-          <section id="emira" class="content-region hide">
-            <p class="section-label">Emira</p>
-            <div class="app-hero">
-              <div class="app-hero-copy">
-                <h2>Your life is more than a list of things to get done.</h2>
-                <p class="app-principle"><strong>Emira is a native iPhone and iPad life calendar where you can set goals, keep memories, journal, and play relaxing games.</strong></p>
-                <p class="intro-summary">A quiet place to keep track of the life you are already living, without turning it into a productivity score.</p>
+          <section class="featured-project" aria-labelledby="current-project-title">
+            <div class="feature-copy">
+              <p class="section-label">Current project</p>
+              <h2 id="current-project-title">Emira</h2>
+              <p class="app-principle">A life calendar where you can set goals, keep memories, journal, and play little relaxing games.</p>
+              <p>Emira is made as much for reflection as planning. There are no streaks to maintain, overdue goals to clear, or productivity scores telling you how well you are living your life.</p>
+              <div class="button-row">
+                <a class="button-link" href="./emira/">Explore Emira</a>
+                <a class="quiet-link" href="./privacy/emira/">Emira privacy</a>
               </div>
-              <aside class="app-download-card app-status-card" aria-label="Emira availability">
-                <p class="app-download-card-kicker">Native iOS app</p>
-                <div class="app-download-grid single-platform">
-                  <span class="platform-action platform-action-disabled" aria-disabled="true">
-                    <strong class="platform-name">iPhone + iPad</strong>
-                    <small class="platform-status" data-download-label="emira:ios">Coming soon to iOS</small>
-                  </span>
-                </div>
-              </aside>
             </div>
-
-            <div class="app-points">
-              <div><h3>Life Calendar</h3><p>See your life in weeks, months, and years. You choose the life-expectancy frame yourself. It gives the calendar a shape, but Emira does not turn it into a death countdown or tell you how much time you have left.</p></div>
-              <div><h3>Eventually + Goals</h3><p>Eventually can hold as many someday ideas as you want. Monthly Goals stay intentionally small: up to three at a time, including zero. Goals can change, go back to Eventually, be completed, or be released without being treated like failures.</p></div>
-              <div><h3>Milestones + Journal</h3><p>Milestones keep things that happened and mattered, including ordinary memories, not only achievements. Journal pages can cover one day or a range of days, include photos, connect to Milestones, and be reread in Book View.</p></div>
-            </div>
-
-            <div class="page-breath" aria-hidden="true"></div>
-
-            <div class="app-points">
-              <div><h3>Time Capsules + Reflection</h3><p>Leave a message or photo for your future self, then let it stay closed until the date you chose. Reflection Reviews are occasional invitations to remember what happened, not checkups on whether you completed enough goals.</p></div>
-              <div><h3>Little relaxing games</h3><p>The Games area gives you something to do that is not planning. Memory, tracing, balancing, building, visual tracking, breathing, puzzles, and other quiet activities can have challenge without turning into scores, streaks, leaderboards, or pressure.</p></div>
-              <div><h3>Make it feel like yours</h3><p>Emira has color profiles, app icons, backgrounds, ambient music, sounds, and motion settings. You can also hide major parts of the app you do not use.</p></div>
-            </div>
-
-            <p>There are no streaks to protect, overdue goals to clear, productivity scores, required daily check-ins, or reports grading how well you lived your month.</p>
-            <p><a href="./emira/">Read the full Emira page</a>, <a href="#support">get help with Emira</a>, or <a href="#privacy">read the privacy policy</a>.</p>
+            <aside class="project-status" aria-label="Emira availability">
+              <span class="status-kicker">Native Apple app</span>
+              <strong>iPhone + iPad</strong>
+              <span>Apple Watch companion</span>
+              <small>Coming soon</small>
+            </aside>
           </section>
 
-          <section id="support" class="content-region hide">
-            <p class="section-label">Fox &amp; Moss</p>
-            <h2>Support</h2>
-            <p>Help for Emira.</p>
-
-            <details class="app-disclosure" open>
-              <summary>
-                <span>Emira</span>
-                <small>Life reflection, without pressure</small>
-              </summary>
-              <div class="disclosure-content">
-                <p>If something isn’t working, or you have a question, email <a href="mailto:emira.support@gmail.com">emira.support@gmail.com</a>.</p>
-                <details class="policy-item">
-                  <summary>Moving to another Apple device</summary>
-                  <p>Choose “Use iCloud” during onboarding on the new device, or turn on “Sync with iCloud” in Settings. Emira looks for the private library in the same Apple Account’s iCloud Drive, including attached photos.</p>
-                </details>
-                <details class="policy-item">
-                  <summary>Backups</summary>
-                  <p>You can export a backup from Settings and restore it later. iCloud is optional; Emira stays local by default.</p>
-                </details>
-                <details class="policy-item">
-                  <summary>Notifications and music</summary>
-                  <p>Both are optional. You can change notification timing, ambient-music playback, and background playback in Settings at any time.</p>
-                </details>
-                <p class="support-note">For faster help, include the Emira version, your iPhone or iPad model, and a short description of what happened.</p>
-              </div>
-            </details>
+          <section id="about" class="about-section" aria-labelledby="about-title">
+            <p class="section-label">About</p>
+            <h2 id="about-title">Small on purpose.</h2>
+            <p>Foxmoss is the studio name behind the things I make. I like software that knows what it is for, visual systems with a little texture, and projects that do not have to pretend to be enormous to matter.</p>
+            <p>Right now Emira is the only project being shown publicly here. Other work can come back when it is ready without turning the homepage into a catalog of unfinished things.</p>
           </section>
 
-          <section id="privacy" class="content-region hide privacy-policy">
-            <p class="section-label">Fox &amp; Moss</p>
-            <h2>Privacy</h2>
-            <p class="updated">Last updated October 28, 2026</p>
-            <p>A simple promise: the things you make and keep are yours. Emira’s details are below.</p>
-
-            <details class="app-disclosure" open>
-              <summary>
-                <span>Emira</span>
-                <small>Life reflection, without pressure</small>
-              </summary>
-              <div class="disclosure-content">
-                <p>Emira works without an account and does not send your personal library to Fox &amp; Moss. Expand any topic for the details.</p>
-
-                <details class="policy-item">
-                  <summary>What Emira stores</summary>
-                  <p>Emira stores the information you choose to enter: your birth date and life settings; goals; milestones; Journal entries and drawings; Time Capsules; personalization settings; and attached photos. By default, this information stays in the app’s storage on your device. Fox &amp; Moss does not operate a server that receives your personal library.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Optional iCloud Drive sync</summary>
-                  <p>If you turn on iCloud in Emira, the app stores a private, versioned copy of your library in iCloud Drive under the Apple Account signed in on your device. This can include your entries, settings, and attached photos so your own Apple devices can stay in step. iCloud is optional and does not require an Emira account. Turning sync off does not delete copies already stored in iCloud. Apple’s handling of iCloud data is governed by <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a>.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Photos and camera</summary>
-                  <p>Emira accesses your photo library or camera when you choose to attach an image, not in the background. You can select specific photos through Apple’s picker and revoke device permissions in Settings. Emira retains its saved attachment copies until you release the last content using them or erase the app’s local data. Revoking Photos permission does not remove copies already saved in your library.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Optional Apple Health reminder timing</summary>
-                  <p>If you enable Health-based reminder timing, Emira asks to read sleep information from Apple Health, uses readable sleep times to choose suitable local notification times, and falls back to ordinary timing when information is unavailable. Emira does not write Health records. Raw Health samples are not added to your library, backups, widgets, or iCloud. Derived notification times and local delivery history may reflect the selected routine. You can revoke Health access in Health or iOS Settings and turn off routine timing or notifications in Emira.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Subscriptions and Apple payments</summary>
-                  <p>Apple handles subscription payments and provides purchase and entitlement information through StoreKit. Emira uses verified subscription status to enable creating and editing content. Fox &amp; Moss does not receive your payment-card details. You can restore your subscription on supported iPhone and iPad devices using the same Apple Account, without enabling private iCloud sync. Manage or cancel through Apple’s subscription settings. Cancellation, expiration, refunds, and StoreKit errors do not erase your library; reading, exporting, and deliberately releasing existing content remain available. Emira uses <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple’s standard Terms of Use</a>.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Audio and the separate Wisp app</summary>
-                  <p>Emira’s ambient and game audio is playback, not voice capture. Voice practice and recording belong to the separate Wisp: Her Voice app, not Emira’s customer binary. Wisp’s own recording, analysis, transcript, and retention disclosures are separate from this Emira policy.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Notifications and ambient music</summary>
-                  <p>If you allow notifications, Emira schedules gentle reminders and Time Capsule opening reminders locally on your device. It does not use a notification server, collect a device token, or send notification data to Fox &amp; Moss. Ambient tracks are included with the app; turning music or optional background playback on does not create an account or send listening information to Fox &amp; Moss.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>No tracking, ads, or analytics</summary>
-                  <p>Emira does not require an account. It does not show ads, sell personal information, use third-party advertising SDKs, or track you across apps or websites. Fox &amp; Moss does not receive the personal content you create in Emira.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Retention, deletion, and your choices</summary>
-                  <p>Your content stays until you change or release it. Linked Journal and Milestone records retain their own content as explained in Emira’s confirmation messages. Releasing content can sync its removal when private iCloud sync is enabled. Erase all Emira data resets this device’s library and app-owned media; it does not erase independent exported backups, shared copies, or the existing private iCloud library. Manage cloud copies through your iCloud storage controls. A later deliberate cloud recovery may restore cloud content. Files you export or share remain under your control and the recipient service’s policies.</p>
-                  <p>You can change permissions in iOS or Health settings, disable optional sync or reminders, and use Emira’s export, Release, and local erase controls. Because Fox &amp; Moss does not hold your private library on a developer server, we cannot retrieve or erase its device or iCloud contents for you.</p>
-                </details>
-
-                <details class="policy-item">
-                  <summary>Support email and privacy requests</summary>
-                  <p>If you email <a href="mailto:emira.support@gmail.com">emira.support@gmail.com</a>, we receive your message and any information or attachments you choose to send and use them to respond. Please avoid sending private Journal or Health information unless you intend to share it. Contact the same address with privacy questions or to request deletion of support correspondence. This is separate from deleting your device or private iCloud library, which you control.</p>
-                </details>
-              </div>
-            </details>
-
-            <details class="policy-item site-privacy">
-              <summary>This support website</summary>
-              <p>This static support site is hosted with GitHub Pages and loads Google Fonts, a stylesheet from cdnjs, and jQuery from code.jquery.com. These providers receive browser requests, which can include your IP address and browser information, to deliver those resources. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>, <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a>, and <a href="https://privacy-policy.openjsf.org/">OpenJS Foundation Privacy Policy</a>. Emira does not add advertising, tracking, or developer analytics through this website.</p>
-            </details>
-
-            <p class="support-note">Privacy questions: <a href="mailto:emira.support@gmail.com">emira.support@gmail.com</a>. Material changes to this policy will be posted here with a new date.</p>
+          <section id="support" class="support-section" aria-labelledby="support-title">
+            <p class="section-label">Support</p>
+            <h2 id="support-title">Need help with Emira?</h2>
+            <p>Email <a href="mailto:emira.support@gmail.com">emira.support@gmail.com</a>. For a bug, include the Emira version, your iPhone or iPad model, and a short description of what happened.</p>
+            <p><a href="./emira/">Emira details and FAQ</a> · <a href="./privacy/emira/">Emira Privacy Policy</a></p>
           </section>
         </div>
       </div>
     </main>
 
-    <footer>© 2026 Fox &amp; Moss · <a href="#privacy">Privacy</a> · <a href="#support">Support</a></footer>
-    <script src="script.js?v=20261031-emira-only"></script>
+    <footer class="site-footer">
+      <span>© 2026 Foxmoss Studio</span>
+      <nav aria-label="Footer navigation">
+        <a href="./privacy/">Privacy</a>
+        <a href="https://github.com/FoxandMoss">GitHub</a>
+        <a href="mailto:emira.support@gmail.com">Contact</a>
+      </nav>
+    </footer>
+
+    <script src="page.js?v=20261031-foxmoss-shell"></script>
   </body>
 </html>
