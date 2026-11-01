@@ -16,6 +16,136 @@ The current public direction is **Emira only**. Wordleaf, Nalia, and Storage Gua
 
 Current source must be read fresh before implementation. Do not treat any hash or older Working as a permanent selector.
 
+## Git / GitHub operating rules
+
+These rules are grounded in the current official Git and GitHub documentation. Their purpose is to prevent repository, branch, and GitHub Pages deployment assumptions.
+
+### Git and GitHub are different layers
+
+- **Git** is the version-control system: commits, branches, refs, remotes, fetch, pull, push, status, and history.
+- **GitHub** hosts Git repositories and adds repository settings, pull requests, Actions, Pages, permissions, deployment history, and other service behavior.
+- A Git branch name does not by itself tell you what GitHub Pages is publishing.
+
+### Never infer repository identity from a branch name
+
+A branch such as `main`, `master`, or `gh-pages` belongs to one specific repository. The fact that `FoxandMoss/emira`, `FoxandMoss/Aubrey`, `FoxandMoss/ARTIST-SCAPE`, `FoxandMoss/Nalia`, `FoxandMoss/Wordleaf`, and `FoxandMoss/WordLeaf-releases` use `main` does not imply that `FoxandMoss/home` has a `main` branch.
+
+If Aleianna says “push to main,” do **not** immediately contradict her because the currently selected repository lacks that branch. First establish which repository/deployment target she means, then inspect that repository's refs.
+
+### Default branch is not the same thing as Pages publishing source
+
+GitHub defines the **default branch** as the branch shown by default in the repository and normally used as the base for new pull requests and commits. New repositories commonly use `main`, but existing repositories can use another default branch.
+
+GitHub Pages can publish from:
+
+- any configured branch using either the repository root `/` or `/docs`; or
+- a GitHub Actions workflow.
+
+Therefore:
+
+> Never equate “default branch” with “the branch that powers the website.”
+
+Before changing or deploying the site, verify the actual Pages publishing source or workflow.
+
+### Required discovery before a website write
+
+1. Identify the exact repository.
+2. Read fresh repository metadata, including `default_branch`.
+3. Enumerate current branches/refs instead of assuming `main`, `master`, or `gh-pages` exists.
+4. Read the target file from the **explicit target ref** before editing it.
+5. For Pages work, verify the configured publishing source or deployment workflow.
+6. Compare current remote state before moving refs or rewriting branch history.
+7. Preserve unrelated branches and work.
+
+At the time this section was written, fresh GitHub metadata for `FoxandMoss/home` reports `gh-pages` as its default branch and the branch listing contains `gh-pages` and `typst-bridge-test`. This is an observation of current state, not a permanent rule. Re-check it before future implementation.
+
+### Safe local Git workflow
+
+Useful commands and what they actually do:
+
+```text
+git status
+```
+
+Inspect the working tree and index before changing anything.
+
+```text
+git fetch origin
+```
+
+Refresh remote-tracking refs without changing the working tree.
+
+```text
+git branch -a
+```
+
+Inspect known local and remote-tracking branches.
+
+```text
+git switch <branch>
+git switch -c <new-branch>
+```
+
+Switch to an existing branch or create and switch to a new branch.
+
+```text
+git pull
+```
+
+Fetch and integrate the configured upstream branch. Use only after confirming the intended branch/upstream.
+
+```text
+git add <paths>
+git commit -m "message"
+```
+
+Stage intended changes and record a local commit.
+
+```text
+git push origin <branch>
+```
+
+Update that specific remote branch. `git push origin main` updates remote `main`; it does not automatically update `gh-pages` or whichever branch/folder/workflow GitHub Pages actually uses.
+
+Avoid blind force pushes. If branch history genuinely must be rewritten, verify the remote head first and use a lease/expected-head safety check.
+
+### GitHub Pages deployment verification
+
+A commit existing in Git is **not** proof that the live website updated.
+
+For every Pages deployment claim:
+
+1. verify the configured Pages source or workflow;
+2. verify the intended commit reached that source;
+3. inspect the relevant GitHub Actions / Pages deployment run and its logs/status;
+4. inspect the live site and confirm it serves the intended content.
+
+Do not use a generic commit-status response with no checks as proof that Pages succeeded or failed. GitHub documents Pages deployment troubleshooting through the site workflow/deployment run.
+
+GitHub also documents an important trigger caveat: when publishing from a branch, commits pushed by a GitHub Actions workflow using `GITHUB_TOKEN` do **not** trigger a Pages build. Automation-created commits therefore require source/deployment verification rather than assuming a rebuild happened.
+
+### What to do when a branch appears to be “missing”
+
+If a requested branch is not found in the currently selected repository:
+
+1. do not conclude the user is wrong;
+2. re-check the repository identity;
+3. inspect accessible repositories and branch refs;
+4. inspect the Pages publishing source/workflow if this is a deployment question;
+5. only then state whether the branch exists in the specific repository being discussed.
+
+### Official references
+
+- [GitHub Docs — Branches](https://docs.github.com/en/pull-requests/reference/branches)
+- [GitHub Docs — Changing the default branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)
+- [GitHub Docs — Configuring a publishing source for GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- [GitHub Docs — Creating a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+- [GitHub Docs — Viewing workflow run history](https://docs.github.com/en/actions/how-tos/monitor-workflows/view-workflow-run-history)
+- [Git documentation — git switch](https://git-scm.com/docs/git-switch)
+- [Git documentation — git fetch](https://git-scm.com/docs/git-fetch)
+- [Git documentation — git pull](https://git-scm.com/docs/git-pull)
+- [Git documentation — git push](https://git-scm.com/docs/git-push)
+
 ---
 
 # Historical template orientation
